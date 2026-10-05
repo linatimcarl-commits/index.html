@@ -1,0 +1,5181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JCBOS | Marketing & Sales Calculator</title>
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --red:#d71920;
+    --dark-red:#b51218;
+    --yellow:#ffcc00;
+    --orange:#f7941d;
+    --green:#168a45;
+    --dark:#202020;
+    --gray:#6b7280;
+    --light:#f5f6f8;
+    --white:#ffffff;
+    --border:#e5e7eb;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    width:100%;
+    overflow-x:hidden;
+}
+
+body{
+    margin:0;
+    min-width:0;
+    width:100%;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff 0%,
+            #fff8df 45%,
+            #f4f5f7 100%
+        );
+
+    color:var(--dark);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--red),
+            #ed1c24 55%,
+            #b51218
+        );
+
+    color:white;
+
+    padding:
+        28px
+        25px
+        34px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+.header:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:330px;
+    height:330px;
+
+    border-radius:50%;
+
+    background:
+        rgba(
+            255,
+            204,
+            0,
+            .18
+        );
+
+    right:-120px;
+    top:-150px;
+}
+
+
+.header-inner{
+
+    width:100%;
+
+    max-width:1150px;
+
+    margin:auto;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    min-width:0;
+}
+
+
+.brand-icon{
+
+    width:54px;
+    height:54px;
+
+    flex:0 0 54px;
+
+    border-radius:15px;
+
+    background:
+        var(--yellow);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+
+    font-weight:900;
+
+    color:var(--red);
+
+    box-shadow:
+        0 6px 18px
+        rgba(0,0,0,.18);
+}
+
+
+.header h1{
+
+    margin:0;
+
+    font-size:31px;
+
+    font-weight:900;
+
+}
+
+
+.header p{
+
+    margin:
+        5px
+        0
+        0;
+
+    opacity:.9;
+
+    font-size:14px;
+
+}
+
+
+.header-badge{
+
+    display:inline-block;
+
+    margin-top:22px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .15
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .25
+        );
+
+    padding:
+        8px
+        13px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.container{
+
+    width:100%;
+
+    max-width:1150px;
+
+    margin:
+        -20px
+        auto
+        40px;
+
+    padding:
+        0
+        18px;
+
+    position:relative;
+
+    z-index:3;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card{
+
+    width:100%;
+
+    min-width:0;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-bottom:20px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.07),
+        0 2px 6px
+        rgba(0,0,0,.04);
+
+    border:
+        1px solid
+        rgba(0,0,0,.04);
+
+    overflow:hidden;
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:20px;
+
+    flex-wrap:wrap;
+}
+
+
+.section-title h2{
+
+    margin:0;
+
+    font-size:20px;
+
+    min-width:0;
+
+    line-height:1.3;
+}
+
+
+.section-title span{
+
+    font-size:12px;
+
+    color:var(--gray);
+}
+
+
+/* =========================================================
+   INPUT GRID
+========================================================= */
+
+.input-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0,1fr)
+        );
+
+    gap:18px;
+
+    width:100%;
+}
+
+
+.input-box{
+
+    position:relative;
+
+    min-width:0;
+
+    width:100%;
+}
+
+
+.input-box label{
+
+    display:block;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    margin-bottom:8px;
+
+    color:#444;
+
+    line-height:1.35;
+}
+
+
+.input-wrapper{
+
+    position:relative;
+
+    width:100%;
+
+    min-width:0;
+}
+
+
+.input-prefix{
+
+    position:absolute;
+
+    left:14px;
+
+    top:50%;
+
+    transform:
+        translateY(-50%);
+
+    font-weight:bold;
+
+    color:#888;
+
+    pointer-events:none;
+
+    z-index:2;
+}
+
+
+.input-box input{
+
+    display:block;
+
+    width:100%;
+
+    max-width:100%;
+
+    min-width:0;
+
+    height:53px;
+
+    border:
+        2px solid
+        var(--border);
+
+    border-radius:11px;
+
+    padding:
+        0
+        14px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    outline:none;
+
+    transition:.2s;
+
+}
+
+
+.input-box.money input{
+
+    padding-left:36px;
+}
+
+
+.input-box input:focus{
+
+    border-color:
+        var(--red);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(
+            215,
+            25,
+            32,
+            .08
+        );
+}
+
+
+/* =========================================================
+   FOOD BUNDLE DROPDOWN
+========================================================= */
+
+.food-bundle-select{
+
+    display:block;
+
+    width:100%;
+
+    max-width:100%;
+
+    height:44px;
+
+    margin-top:9px;
+
+    padding:
+        0
+        12px;
+
+    border:
+        1px solid
+        #d7d7d7;
+
+    border-radius:10px;
+
+    background:#fff;
+
+    color:#333;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    outline:none;
+
+    transition:.2s;
+}
+
+
+.food-bundle-select:hover{
+
+    border-color:#aaa;
+
+}
+
+
+.food-bundle-select:focus{
+
+    border-color:
+        var(--red);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            215,
+            25,
+            32,
+            .08
+        );
+
+}
+
+
+/* =========================================================
+   QUICK AMOUNTS
+========================================================= */
+
+.quick-title{
+
+    margin-top:18px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    color:var(--gray);
+}
+
+
+.quick-buttons{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0,1fr)
+        );
+
+    gap:8px;
+
+    margin-top:9px;
+
+    width:100%;
+}
+
+
+.quick-buttons button{
+
+    width:100%;
+
+    min-width:0;
+
+    border:
+        1px solid
+        #ddd;
+
+    background:#fff;
+
+    color:#333;
+
+    padding:
+        8px
+        10px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.2s;
+}
+
+
+.quick-buttons button:hover{
+
+    background:
+        var(--yellow);
+
+    border-color:
+        var(--yellow);
+
+    color:
+        var(--red);
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.action-row{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:22px;
+
+    width:100%;
+
+    flex-wrap:wrap;
+}
+
+
+.btn{
+
+    border:none;
+
+    min-width:0;
+
+    height:48px;
+
+    padding:
+        0
+        25px;
+
+    border-radius:10px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    font-size:14px;
+}
+
+
+.btn-primary{
+
+    background:
+        var(--red);
+
+    color:white;
+
+    flex:
+        1 1 280px;
+}
+
+
+.btn-primary:hover{
+
+    background:
+        var(--dark-red);
+
+}
+
+
+.btn-secondary{
+
+    background:
+        #f0f1f3;
+
+    color:#444;
+
+    flex:
+        0 1 auto;
+}
+
+
+.btn-secondary:hover{
+
+    background:
+        #e3e4e7;
+
+}
+
+
+/* =========================================================
+   KPI
+========================================================= */
+
+.kpi-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0,1fr)
+        );
+
+    gap:14px;
+
+    width:100%;
+}
+
+
+.kpi{
+
+    min-width:0;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    background:#fafafa;
+
+    border:
+        1px solid
+        var(--border);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+.kpi:after{
+
+    content:"";
+
+    position:absolute;
+
+    right:-25px;
+
+    bottom:-30px;
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:
+        rgba(
+            215,
+            25,
+            32,
+            .05
+        );
+}
+
+
+.kpi-label{
+
+    color:var(--gray);
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    margin-bottom:8px;
+}
+
+
+.kpi-value{
+
+    font-size:26px;
+
+    font-weight:900;
+
+    overflow-wrap:anywhere;
+}
+
+
+.kpi-main{
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf8ef,
+            #ffffff
+        );
+
+    border-color:
+        #c9ead6;
+}
+
+
+.kpi-main .kpi-value{
+
+    color:
+        var(--green);
+
+    font-size:32px;
+}
+
+
+.kpi-yellow{
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff7d7,
+            #ffffff
+        );
+
+    border-color:
+        #f3df91;
+}
+
+
+.kpi-red{
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0f0,
+            #ffffff
+        );
+
+    border-color:
+        #f2caca;
+}
+
+
+/* =========================================================
+   CALCULATION FLOW
+========================================================= */
+
+.flow{
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        auto
+        minmax(0,1fr)
+        auto
+        minmax(0,1fr);
+
+    align-items:center;
+
+    gap:12px;
+
+    width:100%;
+}
+
+
+.flow-box{
+
+    min-width:0;
+
+    width:100%;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:14px;
+
+    padding:18px;
+
+    text-align:center;
+
+    background:#fafafa;
+
+    overflow:hidden;
+}
+
+
+.flow-number{
+
+    width:30px;
+
+    height:30px;
+
+    margin:
+        0
+        auto
+        10px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        var(--red);
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:bold;
+}
+
+
+.flow-title{
+
+    font-size:12px;
+
+    color:var(--gray);
+
+    font-weight:bold;
+}
+
+
+.flow-value{
+
+    margin-top:7px;
+
+    font-size:21px;
+
+    font-weight:900;
+
+    overflow-wrap:anywhere;
+}
+
+
+.arrow{
+
+    font-size:25px;
+
+    color:#bbb;
+
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   FINAL SUMMARY
+========================================================= */
+
+.summary{
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff5d1,
+            #fff
+        );
+
+    border:
+        1px solid
+        #f0dc89;
+
+    border-radius:16px;
+
+    padding:22px;
+}
+
+
+.summary h3{
+
+    margin:
+        0
+        0
+        10px;
+
+    color:
+        var(--red);
+}
+
+
+.summary-text{
+
+    line-height:1.7;
+
+    font-size:14px;
+}
+
+
+.summary-highlight{
+
+    margin-top:15px;
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    border-left:
+        5px solid
+        var(--green);
+
+    font-weight:bold;
+
+    overflow-wrap:anywhere;
+}
+
+
+/* =========================================================
+   FORMULA
+========================================================= */
+
+.formula{
+
+    background:
+        #202020;
+
+    color:white;
+
+    border-radius:15px;
+
+    padding:22px;
+}
+
+
+.formula-title{
+
+    color:
+        var(--yellow);
+
+    font-weight:900;
+
+    margin-bottom:12px;
+}
+
+
+.formula-line{
+
+    padding:9px 0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .1
+        );
+
+    font-size:14px;
+
+    line-height:1.5;
+}
+
+
+.formula-line:last-child{
+
+    border-bottom:none;
+
+}
+
+
+.formula-number{
+
+    color:
+        var(--yellow);
+
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   OPPORTUNITY TABLE
+========================================================= */
+
+.opportunity-table-wrapper{
+
+    width:100%;
+
+    max-width:100%;
+
+    overflow-x:auto;
+
+    border-radius:14px;
+
+    border:
+        1px solid
+        var(--border);
+
+    -webkit-overflow-scrolling:touch;
+}
+
+
+.opportunity-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:700px;
+}
+
+
+.opportunity-table th{
+
+    background:
+        #202020;
+
+    color:white;
+
+    padding:15px;
+
+    text-align:left;
+
+    font-size:12px;
+
+    letter-spacing:.3px;
+}
+
+
+.opportunity-table td{
+
+    padding:15px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    font-size:13px;
+}
+
+
+.opportunity-table tbody tr:last-child td{
+
+    border-bottom:none;
+
+}
+
+
+.table-value{
+
+    font-size:18px !important;
+
+    font-weight:900;
+
+    white-space:nowrap;
+}
+
+
+.highlight-row{
+
+    background:
+        #f0fbf4;
+}
+
+
+.green-value{
+
+    color:
+        var(--green);
+}
+
+
+.yellow-value{
+
+    color:
+        #c38a00;
+}
+
+
+.red-value{
+
+    color:
+        var(--red);
+}
+
+
+.total-row{
+
+    background:
+        #fff5d9;
+}
+
+
+.total-row td{
+
+    border-top:
+        2px solid
+        #f0dc89;
+
+    font-size:14px;
+}
+
+
+/* =========================================================
+   OPPORTUNITY RESULT
+========================================================= */
+
+.opportunity-result{
+
+    margin-top:20px;
+
+    padding:25px;
+
+    border-radius:16px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff4c7,
+            #ffffff
+        );
+
+    border:
+        2px solid
+        #f0dc89;
+}
+
+
+.opportunity-result-label{
+
+    font-size:12px;
+
+    font-weight:900;
+
+    color:
+        var(--gray);
+
+    letter-spacing:1px;
+}
+
+
+.opportunity-result-value{
+
+    margin-top:7px;
+
+    font-size:44px;
+
+    font-weight:900;
+
+    color:
+        var(--red);
+
+    overflow-wrap:anywhere;
+}
+
+
+.opportunity-result-description{
+
+    margin-top:6px;
+
+    font-size:13px;
+
+    color:#666;
+
+    line-height:1.5;
+}
+
+
+/* =========================================================
+   SECOND FORMULA
+========================================================= */
+
+.opportunity-formula{
+
+    margin-top:20px;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    background:
+        #202020;
+
+    color:white;
+}
+
+
+.opportunity-formula-title{
+
+    color:
+        var(--yellow);
+
+    font-weight:900;
+
+    margin-bottom:12px;
+}
+
+
+.formula-step{
+
+    padding:10px 0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .1
+        );
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+
+.formula-step span{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:28px;
+
+    height:28px;
+
+    margin-right:8px;
+
+    border-radius:50%;
+
+    background:
+        var(--red);
+
+    color:white;
+
+    font-size:11px;
+
+    font-weight:900;
+}
+
+
+.formula-step:last-child{
+
+    border-bottom:none;
+
+}
+
+
+.final-formula{
+
+    color:
+        var(--yellow);
+
+    font-weight:900;
+}
+
+
+/* =========================================================
+   MULTIPLE SALES OPPORTUNITY INPUTS
+========================================================= */
+
+.opportunity-inputs{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    width:100%;
+}
+
+
+.opportunity-input-card{
+
+    width:100%;
+
+    min-width:0;
+
+    border:
+        1px solid
+        #e5e7eb;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    background:#fff;
+
+    box-shadow:
+        0 4px 14px
+        rgba(0,0,0,.04);
+
+    overflow:hidden;
+}
+
+
+.opportunity-input-card-head{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:16px;
+
+    flex-wrap:wrap;
+}
+
+
+.opportunity-input-card-head > div{
+
+    min-width:0;
+
+}
+
+
+.opportunity-input-card-title{
+
+    font-size:15px;
+
+    font-weight:900;
+
+    color:#202020;
+}
+
+
+.opportunity-input-card-subtitle{
+
+    font-size:11px;
+
+    color:#6b7280;
+
+    margin-top:3px;
+
+    line-height:1.4;
+}
+
+
+.opportunity-delete{
+
+    border:
+        1px solid
+        #f0caca;
+
+    background:
+        #fff5f5;
+
+    color:
+        #d71920;
+
+    border-radius:9px;
+
+    padding:
+        8px
+        12px;
+
+    cursor:pointer;
+
+    font-weight:800;
+
+    font-size:12px;
+
+    flex-shrink:0;
+}
+
+
+.opportunity-delete:hover{
+
+    background:#d71920;
+
+    color:#fff;
+}
+
+
+.add-opportunity-row{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:16px;
+
+    width:100%;
+}
+
+
+.btn-add-opportunity{
+
+    border:
+        2px dashed
+        #d71920;
+
+    background:#fff;
+
+    color:#d71920;
+
+    border-radius:11px;
+
+    min-height:46px;
+
+    height:auto;
+
+    padding:
+        10px
+        22px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    font-size:13px;
+
+    max-width:100%;
+}
+
+
+.btn-add-opportunity:hover{
+
+    background:#fff5f5;
+}
+
+
+/* =========================================================
+   OPPORTUNITY BREAKDOWN
+========================================================= */
+
+.opportunity-breakdown{
+
+    margin-top:20px;
+
+    width:100%;
+}
+
+
+.opportunity-breakdown-title{
+
+    font-size:15px;
+
+    font-weight:900;
+
+    margin:
+        0
+        0
+        10px;
+}
+
+
+.opportunity-breakdown-wrapper{
+
+    width:100%;
+
+    max-width:100%;
+
+    overflow-x:auto;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:14px;
+
+    -webkit-overflow-scrolling:touch;
+}
+
+
+.opportunity-breakdown-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:1050px;
+}
+
+
+.opportunity-breakdown-table th{
+
+    background:#202020;
+
+    color:#fff;
+
+    padding:12px;
+
+    text-align:left;
+
+    font-size:11px;
+}
+
+
+.opportunity-breakdown-table td{
+
+    padding:12px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    font-size:12px;
+}
+
+
+.opportunity-breakdown-table tbody tr:last-child td{
+
+    border-bottom:none;
+}
+
+
+.opportunity-breakdown-table .total{
+
+    background:#fff5d9;
+
+    font-weight:900;
+}
+
+
+.opportunity-breakdown-table .money{
+
+    white-space:nowrap;
+
+    font-weight:800;
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
+
+@media(max-width:1000px){
+
+    .input-grid{
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+
+    }
+
+
+    .kpi-grid{
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media(max-width:720px){
+
+    .header{
+
+        padding:
+            22px
+            16px
+            28px;
+
+    }
+
+
+    .header h1{
+
+        font-size:24px;
+
+    }
+
+
+    .header p{
+
+        font-size:12px;
+
+    }
+
+
+    .container{
+
+        padding:
+            0
+            12px;
+
+    }
+
+
+    .card{
+
+        padding:18px;
+
+        border-radius:15px;
+
+    }
+
+
+    .input-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .kpi-grid{
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+
+    }
+
+
+    .flow{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .arrow{
+
+        transform:
+            rotate(90deg);
+
+        text-align:center;
+
+        line-height:1;
+
+    }
+
+
+    .action-row{
+
+        flex-direction:column;
+
+    }
+
+
+    .btn{
+
+        width:100%;
+
+    }
+
+
+    .btn-primary,
+    .btn-secondary{
+
+        flex:
+            1 1 auto;
+
+    }
+
+
+    .opportunity-input-card{
+
+        padding:16px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+    .brand{
+
+        gap:10px;
+
+    }
+
+
+    .brand-icon{
+
+        width:46px;
+
+        height:46px;
+
+        flex-basis:46px;
+
+        border-radius:12px;
+
+        font-size:23px;
+
+    }
+
+
+    .header h1{
+
+        font-size:20px;
+
+    }
+
+
+    .header p{
+
+        font-size:11px;
+
+    }
+
+
+    .header-badge{
+
+        font-size:10px;
+
+    }
+
+
+    .kpi-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .kpi{
+
+        padding:17px;
+
+    }
+
+
+    .opportunity-result-value{
+
+        font-size:36px;
+
+    }
+
+
+    .quick-buttons{
+
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(0,1fr)
+            );
+
+    }
+
+
+    .quick-buttons button{
+
+        padding:
+            8px
+            5px;
+
+        font-size:12px;
+
+    }
+
+
+    .food-bundle-select{
+
+        font-size:12px;
+
+    }
+
+}
+
+
+
+
+/* =========================================================
+   VISIBLE PRINT TOOLBAR
+========================================================= */
+.print-toolbar{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin:0 auto 16px;
+    max-width:1150px;
+    padding:0 18px;
+}
+.print-report-btn{
+    border:0;
+    background:var(--red);
+    color:#fff;
+    min-height:48px;
+    padding:0 24px;
+    border-radius:10px;
+    font-weight:900;
+    font-size:14px;
+    cursor:pointer;
+    box-shadow:0 5px 14px rgba(0,0,0,.12);
+}
+.print-report-btn:hover{
+    background:var(--dark-red);
+    transform:translateY(-1px);
+}
+.bundle-meals{
+    margin-top:10px;
+    padding:12px 14px;
+    border-radius:10px;
+    background:#fff8dc;
+    border:1px solid #f0d56a;
+}
+.bundle-meals-title{
+    font-size:11px;
+    font-weight:900;
+    color:#8a6500;
+    margin-bottom:6px;
+    text-transform:uppercase;
+}
+.bundle-meals-list{
+    margin:0;
+    padding-left:20px;
+    color:#333;
+    font-size:13px;
+    line-height:1.65;
+}
+.bundle-meals-list li{
+    margin:0;
+}
+.bundle-meals-empty{
+    color:#777;
+    font-size:12px;
+    font-style:italic;
+}
+@media(max-width:720px){
+    .print-toolbar{
+        padding:0 12px;
+    }
+    .print-report-btn{
+        width:100%;
+    }
+}
+@media print{
+    .print-toolbar{
+        display:none !important;
+    }
+}
+
+/* =========================================================
+   RECEIPT-STYLE PRINT SUMMARY
+========================================================= */
+.print-receipt{
+    display:none;
+}
+
+@media print{
+    @page{
+        size:80mm auto;
+        margin:5mm;
+    }
+
+    html, body{
+        width:80mm;
+        margin:0 !important;
+        padding:0 !important;
+        background:#fff !important;
+    }
+
+    body{
+        font-family:Arial, Helvetica, sans-serif !important;
+        color:#111 !important;
+    }
+
+    .header,
+    .print-toolbar,
+    .container,
+    .footer{
+        display:none !important;
+    }
+
+    .print-receipt{
+        display:block !important;
+        width:100%;
+        max-width:70mm;
+        margin:0 auto;
+        padding:0;
+        background:#fff;
+        color:#111;
+        font-family:Arial, Helvetica, sans-serif;
+    }
+
+    .receipt-brand{
+        text-align:center;
+        border-bottom:1px dashed #222;
+        padding-bottom:8px;
+        margin-bottom:9px;
+    }
+
+    .receipt-logo{
+        font-size:22px;
+        font-weight:900;
+        letter-spacing:1px;
+    }
+
+    .receipt-title{
+        font-size:13px;
+        font-weight:900;
+        margin-top:3px;
+        letter-spacing:.5px;
+    }
+
+    .receipt-subtitle{
+        font-size:8px;
+        color:#555;
+        margin-top:3px;
+    }
+
+    .receipt-date{
+        font-size:8px;
+        color:#555;
+        margin-top:5px;
+    }
+
+    .receipt-section{
+        border-bottom:1px dashed #777;
+        padding:8px 0;
+    }
+
+    .receipt-section:last-child{
+        border-bottom:0;
+    }
+
+    .receipt-section-title{
+        text-align:center;
+        font-size:9px;
+        font-weight:900;
+        letter-spacing:.7px;
+        margin-bottom:7px;
+    }
+
+    .receipt-row{
+        display:flex;
+        justify-content:space-between;
+        gap:8px;
+        font-size:9px;
+        line-height:1.7;
+    }
+
+    .receipt-row span:first-child{
+        color:#444;
+    }
+
+    .receipt-row strong{
+        text-align:right;
+        font-weight:900;
+    }
+
+    .receipt-final{
+        text-align:center;
+        margin:9px 0;
+        padding:9px 5px;
+        border:2px solid #111;
+        border-radius:4px;
+    }
+
+    .receipt-final-label{
+        font-size:9px;
+        font-weight:900;
+        letter-spacing:.6px;
+    }
+
+    .receipt-final-value{
+        font-size:19px;
+        font-weight:900;
+        margin-top:3px;
+    }
+
+    .receipt-insight{
+        font-size:8px;
+        line-height:1.5;
+        text-align:left;
+    }
+
+    .receipt-signature{
+        margin-top:8px;
+    }
+
+    .receipt-signature img{
+        display:block;
+        width:100%;
+        height:45px;
+        object-fit:contain;
+        object-position:center bottom;
+        border-bottom:1px solid #222;
+    }
+
+    .receipt-signature-line{
+        text-align:center;
+        font-size:8px;
+        margin-top:3px;
+    }
+
+    .receipt-thanks{
+        text-align:center;
+        font-size:8px;
+        font-weight:700;
+        padding-top:8px;
+    }
+}
+
+/* =========================================================
+   SIGNATURE / APPROVAL
+========================================================= */
+
+.signature-card{
+    page-break-inside:avoid;
+}
+
+.signature-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+
+.signature-field label{
+    display:block;
+    font-size:12px;
+    font-weight:800;
+    color:#555;
+    margin-bottom:7px;
+}
+
+.signature-field input{
+    width:100%;
+    height:45px;
+    border:1px solid var(--border);
+    border-radius:9px;
+    padding:0 12px;
+    font-size:14px;
+    outline:none;
+}
+
+.signature-field input:focus{
+    border-color:var(--red);
+    box-shadow:0 0 0 3px rgba(215,25,32,.08);
+}
+
+.signature-pad-wrap{
+    margin-top:18px;
+}
+
+.signature-pad-label{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:7px;
+    font-size:12px;
+    font-weight:800;
+    color:#555;
+}
+
+.signature-pad{
+    width:100%;
+    height:170px;
+    display:block;
+    background:#fff;
+    border:2px dashed #cfd3d8;
+    border-radius:12px;
+    cursor:crosshair;
+    touch-action:none;
+}
+
+.signature-pad-hint{
+    margin-top:7px;
+    font-size:11px;
+    color:#888;
+}
+
+.signature-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    margin-top:8px;
+}
+
+.signature-clear{
+    border:1px solid #ddd;
+    background:#f5f6f8;
+    color:#444;
+    border-radius:8px;
+    padding:7px 12px;
+    font-size:11px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.signature-clear:hover{
+    background:#e8e9ec;
+}
+
+.print-meta{
+    display:none;
+}
+
+@media(max-width:720px){
+    .signature-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media print{
+    .signature-card{
+        break-inside:avoid;
+        page-break-inside:avoid;
+    }
+
+    .signature-pad{
+        height:150px;
+        border:1px solid #777;
+    }
+
+    .signature-actions,
+    .signature-pad-hint{
+        display:none !important;
+    }
+
+    .print-meta{
+        display:block;
+        margin-bottom:12px;
+        font-size:11px;
+        color:#555;
+    }
+
+    .signature-field input{
+        border:0;
+        border-bottom:1px solid #777;
+        border-radius:0;
+        padding-left:0;
+        height:32px;
+        background:transparent;
+    }
+}
+
+
+.footer{
+    max-width:1150px;
+    margin:0 auto 30px;
+    padding:0 18px;
+    text-align:center;
+    color:#777;
+    font-size:12px;
+}
+
+@media print{
+    .footer{
+        max-width:none;
+        margin:20px 0 0;
+        padding:0;
+        color:#555;
+    }
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print{
+
+    body{
+
+        background:white;
+
+        overflow:visible;
+
+    }
+
+
+    .header{
+
+        background:
+            var(--red) !important;
+
+        -webkit-print-color-adjust:
+            exact;
+
+        print-color-adjust:
+            exact;
+
+    }
+
+
+    .container{
+
+        width:100%;
+
+        max-width:none;
+
+        margin:
+            20px auto;
+
+        padding:0;
+
+    }
+
+
+    .btn,
+    .quick-buttons,
+    .action-row,
+    .btn-add-opportunity,
+    .opportunity-delete,
+    .add-opportunity-row,
+    .signature-actions{
+
+        display:none !important;
+
+    }
+
+
+    .card{
+
+        box-shadow:none;
+
+        overflow:visible;
+
+    }
+
+
+    .opportunity-table{
+
+        min-width:0;
+
+    }
+
+
+    .opportunity-breakdown-table{
+
+        min-width:0;
+
+    }
+
+
+    .opportunity-result{
+
+        border:
+            1px solid
+            #ddd;
+
+    }
+
+
+    .opportunity-input-card{
+
+        box-shadow:none;
+
+        break-inside:avoid;
+
+        overflow:visible;
+
+    }
+
+}
+
+
+/* =========================================================
+   FORM ELEMENT SAFETY
+========================================================= */
+
+input,
+select,
+button{
+
+    font-family:inherit;
+
+}
+
+
+input,
+select{
+
+    max-width:100%;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header">
+
+    <div class="header-inner">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                JB
+            </div>
+
+            <div>
+
+                <h1>
+                    JCBOS SALES AND PERKS ANALYSIS 2026
+                </h1>
+
+                <p>
+                    Powered by JBKC3011 • Perks Opportunity • Pax Analysis
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-badge">
+
+            JCBOS • PAX CONVERSION TOOL
+
+        </div>
+
+    </div>
+
+</header>
+
+<div class="print-toolbar">
+    <button type="button" class="print-report-btn" onclick="printReport()">
+        🖨️ PRINT REPORT
+    </button>
+</div>
+
+
+
+<div id="printReceipt" class="print-receipt">
+    <div class="receipt-brand">
+        <div class="receipt-logo">JB</div>
+        <div class="receipt-title">JCBOS SALES ANALYSIS</div>
+        <div class="receipt-subtitle">Marketing • Sales Opportunity • Pax Analysis</div>
+        <div class="receipt-date" id="receiptDate"></div>
+    </div>
+
+    <div class="receipt-section">
+        <div class="receipt-section-title">FINAL SUMMARY</div>
+        <div class="receipt-row"><span>Total Pax</span><strong id="receiptPax">0</strong></div>
+        <div class="receipt-row"><span>Amount to Add</span><strong id="receiptAdd">₱0.00</strong></div>
+        <div class="receipt-row"><span>Pax Equivalent</span><strong id="receiptEquivalent">0.00</strong></div>
+        <div class="receipt-row"><span>Final Pax</span><strong id="receiptFinalPax">0.00</strong></div>
+        <div class="receipt-row"><span>Base Food Value</span><strong id="receiptBaseFood">₱0.00</strong></div>
+        <div class="receipt-row"><span>10% Food Opportunity</span><strong id="receiptTenPercent">₱0.00</strong></div>
+        <div class="receipt-row"><span>Total Sales Opportunity</span><strong id="receiptTotalOpportunity">₱0.00</strong></div>
+        <div class="receipt-row"><span>Opportunity Rate</span><strong id="receiptRate">0.00%</strong></div>
+    </div>
+
+    <div class="receipt-final">
+        <div class="receipt-final-label">TOTAL SALES OPPORTUNITY</div>
+        <div class="receipt-final-value" id="receiptFinalOpportunity">₱0.00</div>
+    </div>
+
+    <div class="receipt-section">
+        <div class="receipt-section-title">MARKETING &amp; SALES INSIGHT</div>
+        <div class="receipt-insight" id="receiptInsight">Enter your sales information above to generate the sales opportunity summary.</div>
+    </div>
+
+    <div class="receipt-section">
+        <div class="receipt-section-title">APPROVAL</div>
+        <div class="receipt-row"><span>Prepared By</span><strong id="receiptPreparedBy">—</strong></div>
+        <div class="receipt-row"><span>Position</span><strong id="receiptPosition">—</strong></div>
+        <div class="receipt-row"><span>Approved By</span><strong id="receiptApprovedBy">—</strong></div>
+        <div class="receipt-row"><span>Date</span><strong id="receiptSignatureDate">—</strong></div>
+        <div class="receipt-signature">
+            <img id="receiptSignatureImage" alt="Digital Signature">
+            <div class="receipt-signature-line">PREPARED BY SIGNATURE</div>
+        </div>
+    </div>
+
+    <div class="receipt-thanks">JCBOS • SALES OPPORTUNITY SUMMARY</div>
+</div>
+
+<div class="container">
+
+
+<!-- =========================================================
+     INPUT CARD
+========================================================= -->
+
+<div class="card">
+
+    <div class="section-title">
+
+        <h2>
+            Sales Opportunity Inputs
+        </h2>
+
+        <span>
+            Enter your actual sales data
+        </span>
+
+    </div>
+
+
+    <div
+        id="opportunityInputs"
+        class="opportunity-inputs">
+    </div>
+
+
+    <div class="add-opportunity-row">
+
+        <button
+            type="button"
+            class="btn-add-opportunity"
+            onclick="addOpportunity()">
+
+            ＋ ADD SALES OPPORTUNITY
+
+        </button>
+
+    </div>
+
+
+    <div class="action-row">
+
+        <button
+            type="button"
+            class="btn btn-primary"
+            onclick="calculateAll()">
+
+            CALCULATE SALES OPPORTUNITY
+
+        </button>
+
+
+        <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="resetCalculator()">
+
+            RESET
+
+        </button>
+
+
+        <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="printReport()">
+
+            PRINT REPORT
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     KPI RESULTS
+========================================================= -->
+
+<div class="card">
+
+    <div class="section-title">
+
+        <h2>
+            Sales Opportunity Summary
+        </h2>
+
+        <span>
+            Real-time calculation
+        </span>
+
+    </div>
+
+
+    <div class="kpi-grid">
+
+
+        <div class="kpi">
+
+            <div class="kpi-label">
+                TOTAL PAX
+            </div>
+
+            <div
+                class="kpi-value"
+                id="displayPax">
+
+                0
+
+            </div>
+
+        </div>
+
+
+        <div class="kpi kpi-yellow">
+
+            <div class="kpi-label">
+                AMOUNT TO ADD
+            </div>
+
+            <div
+                class="kpi-value"
+                id="displayAdd">
+
+                ₱0.00
+
+            </div>
+
+        </div>
+
+
+        <div class="kpi kpi-red">
+
+            <div class="kpi-label">
+                PAX EQUIVALENT
+            </div>
+
+            <div
+                class="kpi-value"
+                id="displayEquivalent">
+
+                0.00
+
+            </div>
+
+        </div>
+
+
+        <div class="kpi kpi-main">
+
+            <div class="kpi-label">
+                FINAL PAX
+            </div>
+
+            <div
+                class="kpi-value"
+                id="displayFinal">
+
+                0.00
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     CALCULATION FLOW
+========================================================= -->
+
+<div class="card">
+
+    <div class="section-title">
+
+        <h2>
+            Calculation Flow
+        </h2>
+
+        <span>
+            JCBOS Formula
+        </span>
+
+    </div>
+
+
+    <div class="flow">
+
+
+        <div class="flow-box">
+
+            <div class="flow-number">
+                1
+            </div>
+
+            <div class="flow-title">
+                PAX
+            </div>
+
+            <div
+                class="flow-value"
+                id="flowPax">
+
+                0
+
+            </div>
+
+        </div>
+
+
+        <div class="arrow">
+            ×
+        </div>
+
+
+        <div class="flow-box">
+
+            <div class="flow-number">
+                2
+            </div>
+
+            <div class="flow-title">
+                DESIRED AMOUNT
+            </div>
+
+            <div
+                class="flow-value"
+                id="flowAmount">
+
+                ₱0.00
+
+            </div>
+
+        </div>
+
+
+        <div class="arrow">
+            =
+        </div>
+
+
+        <div class="flow-box">
+
+            <div class="flow-number">
+                3
+            </div>
+
+            <div class="flow-title">
+                AMOUNT TO ADD
+            </div>
+
+            <div
+                class="flow-value"
+                id="flowTotal">
+
+                ₱0.00
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <br>
+
+
+    <div class="flow">
+
+
+        <div class="flow-box">
+
+            <div class="flow-number">
+                4
+            </div>
+
+            <div class="flow-title">
+                AMOUNT TO ADD
+            </div>
+
+            <div
+                class="flow-value"
+                id="flowTotal2">
+
+                ₱0.00
+
+            </div>
+
+        </div>
+
+
+        <div class="arrow">
+            ÷
+        </div>
+
+
+        <div class="flow-box">
+
+            <div class="flow-number">
+                5
+            </div>
+
+            <div class="flow-title">
+                FOOD AMOUNT
+            </div>
+
+            <div
+                class="flow-value"
+                id="flowFood">
+
+                ₱0.00
+
+            </div>
+
+        </div>
+
+
+        <div class="arrow">
+            =
+        </div>
+
+
+        <div class="flow-box">
+
+            <div class="flow-number">
+                6
+            </div>
+
+            <div class="flow-title">
+                PAX EQUIVALENT
+            </div>
+
+            <div
+                class="flow-value"
+                id="flowEquivalent">
+
+                0.00
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     FINAL PAX
+========================================================= -->
+
+<div class="card">
+
+    <div class="section-title">
+
+        <h2>
+            Final Pax Calculation
+        </h2>
+
+        <span>
+            Remaining opportunity
+        </span>
+
+    </div>
+
+
+    <div class="flow">
+
+
+        <div class="flow-box">
+
+            <div class="flow-title">
+                ORIGINAL PAX
+            </div>
+
+            <div
+                class="flow-value"
+                id="finalOriginal">
+
+                0
+
+            </div>
+
+        </div>
+
+
+        <div class="arrow">
+            −
+        </div>
+
+
+        <div class="flow-box">
+
+            <div class="flow-title">
+                PAX EQUIVALENT
+            </div>
+
+            <div
+                class="flow-value"
+                id="finalDeduct">
+
+                0.00
+
+            </div>
+
+        </div>
+
+
+        <div class="arrow">
+            =
+        </div>
+
+
+        <div
+            class="flow-box"
+            style="
+                background:#eaf8ef;
+                border-color:#c9ead6;
+            ">
+
+            <div class="flow-title">
+                FINAL PAX
+            </div>
+
+            <div
+                class="flow-value"
+                style="
+                    color:#168a45;
+                    font-size:28px;
+                "
+                id="finalResult">
+
+                0.00
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     OPPORTUNITY ANALYSIS
+========================================================= -->
+
+<div class="card">
+
+    <div class="section-title">
+
+        <h2>
+            JCBOS Sales Opportunity & 10% Conversion Analysis
+        </h2>
+
+        <span>
+            Based on Final Pax
+        </span>
+
+    </div>
+
+
+    <div class="opportunity-breakdown">
+
+        <div class="opportunity-breakdown-title">
+
+            Sales Opportunity Breakdown
+
+        </div>
+
+
+        <div class="opportunity-breakdown-wrapper">
+
+            <table class="opportunity-breakdown-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>OPPORTUNITY</th>
+
+                        <th>PAX</th>
+
+                        <th>DESIRED / PAX</th>
+
+                        <th>FOOD AMOUNT</th>
+
+                        <th>AMOUNT ADDED</th>
+
+                        <th>PAX EQUIVALENT</th>
+
+                        <th>FINAL PAX</th>
+
+                        <th>10% FOOD OPPORTUNITY</th>
+
+                        <th>TOTAL OPPORTUNITY</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody
+                    id="opportunityBreakdownBody">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <div class="opportunity-table-wrapper">
+
+        <table class="opportunity-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        CALCULATION
+                    </th>
+
+                    <th>
+                        VALUE
+                    </th>
+
+                    <th>
+                        FORMULA / DESCRIPTION
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                <tr>
+
+                    <td>
+                        <strong>
+                            FINAL PAX
+                        </strong>
+                    </td>
+
+                    <td class="table-value">
+
+                        <span id="opFinalPax">
+                            0.00
+                        </span>
+
+                    </td>
+
+                    <td>
+                        Final Pax from the main calculator
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <strong>
+                            FOOD AMOUNT
+                        </strong>
+                    </td>
+
+                    <td class="table-value">
+
+                        <span id="opFoodAmount">
+                            ₱0.00
+                        </span>
+
+                    </td>
+
+                    <td>
+                        Food Amount used for each opportunity
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <strong>
+                            BASE FOOD VALUE
+                        </strong>
+                    </td>
+
+                    <td class="table-value">
+
+                        <span id="opBaseFood">
+                            ₱0.00
+                        </span>
+
+                    </td>
+
+                    <td>
+                        Combined Final Pax × Food Amount per opportunity
+                    </td>
+
+                </tr>
+
+
+                <tr class="highlight-row">
+
+                    <td>
+
+                        <strong>
+                            10% FOOD OPPORTUNITY
+                        </strong>
+
+                    </td>
+
+                    <td
+                        class="
+                            table-value
+                            green-value
+                        ">
+
+                        <span id="opTenPercent">
+                            ₱0.00
+                        </span>
+
+                    </td>
+
+                    <td>
+                        Base Food Value × 10%
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+
+                        <strong>
+                            AMOUNT ADDED
+                        </strong>
+
+                    </td>
+
+                    <td
+                        class="
+                            table-value
+                            yellow-value
+                        ">
+
+                        <span id="opAmountAdded">
+                            ₱0.00
+                        </span>
+
+                    </td>
+
+                    <td>
+                        Each opportunity: No. of Pax × Desired Amount
+                    </td>
+
+                </tr>
+
+
+                <tr class="total-row">
+
+                    <td>
+
+                        <strong>
+                            TOTAL SALES OPPORTUNITY
+                        </strong>
+
+                    </td>
+
+                    <td
+                        class="
+                            table-value
+                            red-value
+                        ">
+
+                        <span id="opTotalOpportunity">
+                            ₱0.00
+                        </span>
+
+                    </td>
+
+                    <td>
+                        Combined Amount Added + 10% Food Opportunity
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- =====================================================
+         OPPORTUNITY RESULT
+    ===================================================== -->
+
+    <div class="opportunity-result">
+
+        <div class="opportunity-result-label">
+
+            SALES OPPORTUNITY RATE
+
+        </div>
+
+
+        <div
+            class="opportunity-result-value"
+            id="opportunityRate">
+
+            0.00%
+
+        </div>
+
+
+        <div
+            class="opportunity-result-description"
+            id="opportunityDescription">
+
+            Enter your sales data to calculate the opportunity rate.
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SECOND FORMULA
+    ===================================================== -->
+
+    <div class="opportunity-formula">
+
+        <div class="opportunity-formula-title">
+
+            JCBOS 10% OPPORTUNITY FORMULA
+
+        </div>
+
+
+        <div class="formula-step">
+
+            <span>
+                01
+            </span>
+
+            Combined Final Pax × Food Amount per opportunity
+
+            = Base Food Value
+
+        </div>
+
+
+        <div class="formula-step">
+
+            <span>
+                02
+            </span>
+
+            Base Food Value × 10%
+
+            = 10% Food Opportunity
+
+        </div>
+
+
+        <div class="formula-step">
+
+            <span>
+                03
+            </span>
+
+            Combined Amount Added + 10% Food Opportunity
+
+            = Total Sales Opportunity
+
+        </div>
+
+
+        <div class="formula-step final-formula">
+
+            <span>
+                04
+            </span>
+
+            Total Sales Opportunity ÷ Base Food Value × 100
+
+            = Opportunity Rate
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MARKETING INSIGHT
+========================================================= -->
+
+<div class="card">
+
+    <div class="summary">
+
+        <h3>
+            📊 Marketing & Sales Insight
+        </h3>
+
+
+        <div
+            class="summary-text"
+            id="summaryText">
+
+            Enter your sales information above to generate
+            the sales opportunity summary.
+
+        </div>
+
+
+        <div
+            class="summary-highlight"
+            id="summaryHighlight">
+
+            Final Pax: 0.00
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     SIGNATURE / APPROVAL
+========================================================= -->
+
+<div class="card signature-card">
+
+    <div class="section-title">
+        <h2>Signature & Approval</h2>
+        <span>Complete before printing / submitting</span>
+    </div>
+
+    <div class="print-meta">
+        JCBOS SALES ANALYSIS • Marketing • Sales Opportunity • Pax Analysis
+    </div>
+
+    <div class="signature-grid">
+
+        <div class="signature-field">
+            <label>PREPARED BY</label>
+            <input
+                type="text"
+                id="preparedBy"
+                placeholder="Enter name">
+        </div>
+
+        <div class="signature-field">
+            <label>POSITION / DESIGNATION</label>
+            <input
+                type="text"
+                id="preparedPosition"
+                placeholder="Enter position">
+        </div>
+
+        <div class="signature-field">
+            <label>REVIEWED / APPROVED BY</label>
+            <input
+                type="text"
+                id="approvedBy"
+                placeholder="Enter name">
+        </div>
+
+        <div class="signature-field">
+            <label>DATE</label>
+            <input
+                type="date"
+                id="signatureDate">
+        </div>
+
+    </div>
+
+    <div class="signature-pad-wrap">
+
+        <div class="signature-pad-label">
+            <span>DIGITAL SIGNATURE — PREPARED BY</span>
+        </div>
+
+        <canvas
+            id="signaturePad"
+            class="signature-pad">
+        </canvas>
+
+        <div class="signature-actions">
+            <button
+                type="button"
+                class="signature-clear"
+                onclick="clearSignature()">
+                CLEAR SIGNATURE
+            </button>
+        </div>
+
+        <div class="signature-pad-hint">
+            Sign inside the box using your mouse, trackpad, stylus, or finger.
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     ORIGINAL FORMULA
+========================================================= -->
+
+<div class="card">
+
+    <div class="formula">
+
+        <div class="formula-title">
+
+            JCBOS ORIGINAL FORMULA
+
+        </div>
+
+
+        <div class="formula-line">
+
+            <span class="formula-number">
+                01
+            </span>
+
+            Each opportunity: No. of Pax × Desired Amount
+
+            = Amount to Add
+
+        </div>
+
+
+        <div class="formula-line">
+
+            <span class="formula-number">
+                02
+            </span>
+
+            Amount to Add ÷ Food Amount
+
+            = Pax Equivalent
+
+        </div>
+
+
+        <div class="formula-line">
+
+            <span class="formula-number">
+                03
+            </span>
+
+            No. of Pax − Pax Equivalent
+
+            = Final Pax
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<div class="footer">
+
+    JCBOS Marketing & Sales Calculator
+    •
+    Pax Opportunity Analysis
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   FORMATTERS
+========================================================= */
+
+function peso(value){
+
+    return "₱" +
+        Number(value || 0).toLocaleString(
+            "en-PH",
+            {
+                minimumFractionDigits:2,
+                maximumFractionDigits:2
+            }
+        );
+
+}
+
+
+function num(value){
+
+    return Number(value || 0).toLocaleString(
+        "en-PH",
+        {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        }
+    );
+
+}
+
+
+/* =========================================================
+   FOOD BUNDLES
+   EDIT THIS LIST IF NEEDED
+========================================================= */
+
+const foodBundles = [
+
+	 {
+        name:"Yumburger solo",
+        price:50
+    },
+    
+   	{
+        name:"1pc- chickenjoy solo",
+        price:95
+    },
+    
+     {
+        name:"2pc- chickenjoy solo",
+        price:190
+    },
+    
+     {
+        name:"Chicken w/spagehetti solo",
+        price:165
+    },
+    
+    
+     {
+        name:"Spagehetti solo",
+        price:72
+    },
+    
+     {
+        name:"Peach mango pie solo",
+        price:50
+    },
+    
+     {
+        name:"Peach mango pie large",
+        price:79
+    },
+    
+     {
+        name:"Tuna Pie",
+        price:79
+    },
+
+
+    
+     {
+        name:"Yumburger w/ cheese",
+        price:79
+    },
+    
+    
+     {
+        name:"Yumburger w/ cheese",
+        price:79
+    },
+    
+    {
+        name:"Jollyhotdog",
+        price:90
+     
+        
+        
+    },
+    
+    
+      
+    
+    
+      {
+        name:"JKM 1-pc chickenjoy w/rice with and toy",
+        price:160
+    
+    
+        
+    },
+    
+    
+      {
+        name:"JKM Jolly Spaghetti and toy",
+        price:137
+    
+    
+        
+    },
+    
+       {
+        name:"JKM Jolly yumburger and toy",
+        price:115
+    
+    
+        
+    },
+    
+     {
+        name:"JollyBite",
+        price:232
+    },
+    
+    {
+        name:"JollyFeast",
+        price:224
+    
+    
+        
+    },
+    
+    
+     {
+        name:"JollyFeast2",
+        price:282
+    
+    
+        
+    },
+    
+    
+     {
+        name:"JollyFun",
+        price:217
+    
+    
+        
+    },
+    
+    {
+        name:"Bundle 1",
+        price:167
+    },
+
+    {
+        name:"Bundle 2",
+        price:199
+    },
+
+    {
+        name:"Bundle 3",
+        price:249
+    },
+
+    {
+        name:"Bundle 4",
+        price:299
+    }
+    
+    
+
+];
+
+
+
+/* =========================================================
+   MEAL CONTENT PER BUNDLE
+========================================================= */
+
+const bundleMeals = {
+
+    "Bundle 1":[
+        "1-pc. Chickenjoy",
+        "Rice",
+        "Jolly Spaghetti"
+    ],
+
+    "Bundle 2":[
+        "Jolly Spaghetti",
+        "Cheesy Yumburger",
+        "Peach Mango Pie"
+    ],
+
+    "Bundle 3":[
+        "1-pc. Burger Steak",
+        "Jolly Spaghetti",
+        "Peach Mango Pie"
+    ],
+
+    "Bundle 4":[
+        "2-pc. Burger Steak",
+        "Peach Mango Pie"
+    ],
+
+    "JollyBite":[
+        "1-pc. Chickenjoy",
+        "Rice",
+        "Toy",
+        "Jolly Spaghetti"
+    ],
+
+    "JollyFun":[
+        "1-pc. Chickenjoy",
+        "Rice",
+        "Jolly Spaghetti",
+        "Yumburger"
+    ],
+
+    "JollyFeast":[
+        "1-pc. Chickenjoy",
+        "Rice",
+        "Cheesy Yumburger",
+        "Peach Mango Pie"
+    ],
+
+    "JollyFeast2":[
+        "1-pc. Chickenjoy",
+        "Rice",
+        "Toy",
+        "Jolly Spaghetti",
+        "Yumburger"
+    ]
+
+};
+
+function renderBundleMeals(card, bundleName){
+
+    const box = card.querySelector(".bundle-meals");
+    if(!box) return;
+
+    const meals = bundleMeals[bundleName];
+
+    if(!meals || meals.length === 0){
+        box.innerHTML = `
+            <div class="bundle-meals-title">MEAL CONTENT</div>
+            <div class="bundle-meals-empty">
+                Select a bundle to view the included meals.
+            </div>
+        `;
+        return;
+    }
+
+    box.innerHTML = `
+        <div class="bundle-meals-title">
+            ${bundleName} — INCLUDED MEALS
+        </div>
+        <ul class="bundle-meals-list">
+            ${meals.map(meal => `<li>${meal}</li>`).join("")}
+        </ul>
+    `;
+
+}
+
+
+/* =========================================================
+   CREATE FOOD BUNDLE OPTIONS
+========================================================= */
+
+function createFoodBundleOptions(){
+
+    let options = `
+
+        <option value="">
+            Select Bundle
+        </option>
+
+    `;
+
+
+    foodBundles.forEach(
+        bundle => {
+
+            options += `
+
+                <option value="${bundle.price}" data-bundle-name="${bundle.name}">
+
+                    ${bundle.name} –
+                    ${peso(bundle.price)}
+
+                </option>
+
+            `;
+
+        }
+    );
+
+
+    options += `
+
+        <option value="custom">
+            Custom Amount
+        </option>
+
+    `;
+
+
+    return options;
+
+}
+
+
+/* =========================================================
+   OPPORTUNITY COUNTER
+========================================================= */
+
+let opportunityCounter = 0;
+
+
+/* =========================================================
+   OPPORTUNITY TEMPLATE
+========================================================= */
+
+function opportunityTemplate(id){
+
+    return `
+
+        <div
+            class="opportunity-input-card"
+            data-opportunity-id="${id}">
+
+
+            <div class="opportunity-input-card-head">
+
+                <div>
+
+                    <div class="opportunity-input-card-title">
+
+                        SALES OPPORTUNITY #${id}
+
+                    </div>
+
+
+                    <div class="opportunity-input-card-subtitle">
+
+                        Enter pax, desired amount per pax and food amount
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="opportunity-delete"
+                    onclick="removeOpportunity(${id})">
+
+                    DELETE
+
+                </button>
+
+            </div>
+
+
+            <div class="input-grid">
+
+
+                <!-- =================================================
+                     NO. OF PAX
+                ================================================== -->
+
+                <div class="input-box">
+
+                    <label>
+                        NO. OF PAX
+                    </label>
+
+
+                    <input
+                        type="number"
+                        class="opp-pax"
+                        placeholder="1,000"
+                        min="0"
+                        step="0.01"
+                        oninput="calculateAll()">
+
+                </div>
+
+
+                <!-- =================================================
+                     DESIRED AMOUNT
+                ================================================== -->
+
+                <div class="input-box money">
+
+                    <label>
+                        DESIRED AMOUNT TO ADD / PAX
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <span class="input-prefix">
+                            ₱
+                        </span>
+
+
+                        <input
+                            type="number"
+                            class="opp-desired"
+                            placeholder="10.00"
+                            min="0"
+                            step="0.01"
+                            oninput="calculateAll()">
+
+                    </div>
+
+
+                    <div class="quick-title">
+
+                        QUICK AMOUNT
+
+                    </div>
+
+
+                    <div class="quick-buttons">
+
+
+                        <button
+                            type="button"
+                            onclick="setOpportunityAmount(${id},5)">
+
+                            ₱5
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            onclick="setOpportunityAmount(${id},10)">
+
+                            ₱10
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            onclick="setOpportunityAmount(${id},15)">
+
+                            ₱15
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     FOOD AMOUNT
+                ================================================== -->
+
+                <div class="input-box money">
+
+                    <label>
+                        FOOD AMOUNT
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <span class="input-prefix">
+                            ₱
+                        </span>
+
+
+                        <input
+                            type="number"
+                            class="opp-food"
+                            placeholder="290.00"
+                            min="0"
+                            step="0.01"
+                            oninput="calculateAll()">
+
+                    </div>
+
+
+                    <!-- =================================================
+                         FOOD BUNDLE DROPDOWN
+                    ================================================== -->
+
+                    <select
+                        class="food-bundle-select"
+                        onchange="setFoodBundle(${id},this.value)">
+
+                        ${createFoodBundleOptions()}
+
+                    </select>
+
+                    <div class="bundle-meals">
+                        <div class="bundle-meals-title">MEAL CONTENT</div>
+                        <div class="bundle-meals-empty">
+                            Select a bundle to view the included meals.
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   ADD OPPORTUNITY
+========================================================= */
+
+function addOpportunity(){
+
+    opportunityCounter++;
+
+
+    document
+        .getElementById(
+            "opportunityInputs"
+        )
+        .insertAdjacentHTML(
+            "beforeend",
+            opportunityTemplate(
+                opportunityCounter
+            )
+        );
+
+
+    calculateAll();
+
+}
+
+
+/* =========================================================
+   REMOVE OPPORTUNITY
+========================================================= */
+
+function removeOpportunity(id){
+
+    const card =
+        document.querySelector(
+            `.opportunity-input-card[data-opportunity-id="${id}"]`
+        );
+
+
+    if(card){
+
+        card.remove();
+
+    }
+
+
+    if(
+        document.querySelectorAll(
+            ".opportunity-input-card"
+        ).length === 0
+    ){
+
+        addOpportunity();
+
+    }
+
+
+    calculateAll();
+
+}
+
+
+/* =========================================================
+   DESIRED AMOUNT QUICK BUTTON
+========================================================= */
+
+function setOpportunityAmount(
+    id,
+    amount
+){
+
+    const card =
+        document.querySelector(
+            `.opportunity-input-card[data-opportunity-id="${id}"]`
+        );
+
+
+    if(!card) return;
+
+
+    const input =
+        card.querySelector(
+            ".opp-desired"
+        );
+
+
+    input.value =
+        amount;
+
+
+    calculateAll();
+
+}
+
+
+/* =========================================================
+   FOOD BUNDLE SELECTION
+========================================================= */
+
+function setFoodBundle(
+    id,
+    value
+){
+
+    const card =
+        document.querySelector(
+            `.opportunity-input-card[data-opportunity-id="${id}"]`
+        );
+
+
+    if(!card) return;
+
+
+    const input =
+        card.querySelector(
+            ".opp-food"
+        );
+
+    const select =
+        card.querySelector(
+            ".food-bundle-select"
+        );
+
+    const selectedOption =
+        select
+            ? select.options[select.selectedIndex]
+            : null;
+
+    const bundleName =
+        selectedOption
+            ? selectedOption.dataset.bundleName || ""
+            : "";
+
+
+    /* -----------------------------------------
+       SHOW INCLUDED MEALS
+    ----------------------------------------- */
+
+    renderBundleMeals(card, bundleName);
+
+
+    /* -----------------------------------------
+       SELECT BUNDLE
+    ----------------------------------------- */
+
+    if(
+        value !== "" &&
+        value !== "custom"
+    ){
+
+        const amount =
+            parseFloat(value);
+
+
+        if(!isNaN(amount)){
+
+            input.value =
+                amount.toFixed(2);
+
+        }
+
+    }
+
+
+    /* -----------------------------------------
+       CUSTOM AMOUNT
+    ----------------------------------------- */
+
+    if(value === "custom"){
+
+        input.value = "";
+
+        input.focus();
+
+    }
+
+
+    /* -----------------------------------------
+       EMPTY
+    ----------------------------------------- */
+
+    if(value === ""){
+
+        input.value = "";
+
+    }
+
+
+    calculateAll();
+
+}
+
+
+/* =========================================================
+   READ ALL OPPORTUNITIES
+========================================================= */
+
+function getOpportunities(){
+
+    const cards =
+        document.querySelectorAll(
+            ".opportunity-input-card"
+        );
+
+
+    const opportunities = [];
+
+
+    cards.forEach(
+        (card,index)=>{
+
+
+            const pax =
+                parseFloat(
+                    card.querySelector(
+                        ".opp-pax"
+                    ).value
+                ) || 0;
+
+
+            const desiredAmount =
+                parseFloat(
+                    card.querySelector(
+                        ".opp-desired"
+                    ).value
+                ) || 0;
+
+
+            const foodAmount =
+                parseFloat(
+                    card.querySelector(
+                        ".opp-food"
+                    ).value
+                ) || 0;
+
+
+            /* -----------------------------------------
+               ORIGINAL FORMULA
+            ----------------------------------------- */
+
+            const amountToAdd =
+                pax *
+                desiredAmount;
+
+
+            const paxEquivalent =
+                foodAmount > 0
+                    ?
+                    amountToAdd /
+                    foodAmount
+                    :
+                    0;
+
+
+            const finalPax =
+                Math.max(
+                    0,
+                    pax -
+                    paxEquivalent
+                );
+
+
+            /* -----------------------------------------
+               10% OPPORTUNITY
+            ----------------------------------------- */
+
+            const baseFoodValue =
+                finalPax *
+                foodAmount;
+
+
+            const tenPercentOpportunity =
+                baseFoodValue *
+                0.10;
+
+
+            const totalSalesOpportunity =
+                amountToAdd +
+                tenPercentOpportunity;
+
+
+            const opportunityRate =
+                baseFoodValue > 0
+                    ?
+                    (
+                        totalSalesOpportunity /
+                        baseFoodValue
+                    ) *
+                    100
+                    :
+                    0;
+
+
+            opportunities.push({
+
+                number:
+                    index + 1,
+
+                pax:
+                    pax,
+
+                desiredAmount:
+                    desiredAmount,
+
+                foodAmount:
+                    foodAmount,
+
+                amountToAdd:
+                    amountToAdd,
+
+                paxEquivalent:
+                    paxEquivalent,
+
+                finalPax:
+                    finalPax,
+
+                baseFoodValue:
+                    baseFoodValue,
+
+                tenPercentOpportunity:
+                    tenPercentOpportunity,
+
+                totalSalesOpportunity:
+                    totalSalesOpportunity,
+
+                opportunityRate:
+                    opportunityRate
+
+            });
+
+        }
+    );
+
+
+    return opportunities;
+
+}
+
+
+/* =========================================================
+   MAIN CALCULATION
+========================================================= */
+
+function calculateAll(){
+
+    const opportunities =
+        getOpportunities();
+
+
+    let totalPax = 0;
+
+    let totalAmountAdded = 0;
+
+    let totalPaxEquivalent = 0;
+
+    let totalFinalPax = 0;
+
+    let totalBaseFoodValue = 0;
+
+    let totalTenPercentOpportunity = 0;
+
+    let totalSalesOpportunity = 0;
+
+
+    opportunities.forEach(
+        op=>{
+
+            totalPax +=
+                op.pax;
+
+
+            totalAmountAdded +=
+                op.amountToAdd;
+
+
+            totalPaxEquivalent +=
+                op.paxEquivalent;
+
+
+            totalFinalPax +=
+                op.finalPax;
+
+
+            totalBaseFoodValue +=
+                op.baseFoodValue;
+
+
+            totalTenPercentOpportunity +=
+                op.tenPercentOpportunity;
+
+
+            totalSalesOpportunity +=
+                op.totalSalesOpportunity;
+
+        }
+    );
+
+
+    /* =====================================================
+       KPI
+    ===================================================== */
+
+    document.getElementById(
+        "displayPax"
+    ).textContent =
+        num(totalPax);
+
+
+    document.getElementById(
+        "displayAdd"
+    ).textContent =
+        peso(totalAmountAdded);
+
+
+    document.getElementById(
+        "displayEquivalent"
+    ).textContent =
+        num(totalPaxEquivalent);
+
+
+    document.getElementById(
+        "displayFinal"
+    ).textContent =
+        num(totalFinalPax);
+
+
+    /* =====================================================
+       FLOW
+    ===================================================== */
+
+    document.getElementById(
+        "flowPax"
+    ).textContent =
+        num(totalPax);
+
+
+    document.getElementById(
+        "flowAmount"
+    ).textContent =
+
+        opportunities.length === 1
+            ?
+            peso(
+                opportunities[0]
+                    .desiredAmount
+            )
+            :
+            "Per opportunity";
+
+
+    document.getElementById(
+        "flowTotal"
+    ).textContent =
+        peso(totalAmountAdded);
+
+
+    document.getElementById(
+        "flowTotal2"
+    ).textContent =
+        peso(totalAmountAdded);
+
+
+    document.getElementById(
+        "flowFood"
+    ).textContent =
+
+        opportunities.length === 1
+            ?
+            peso(
+                opportunities[0]
+                    .foodAmount
+            )
+            :
+            "Per opportunity";
+
+
+    document.getElementById(
+        "flowEquivalent"
+    ).textContent =
+        num(totalPaxEquivalent);
+
+
+    /* =====================================================
+       FINAL PAX
+    ===================================================== */
+
+    document.getElementById(
+        "finalOriginal"
+    ).textContent =
+        num(totalPax);
+
+
+    document.getElementById(
+        "finalDeduct"
+    ).textContent =
+        num(totalPaxEquivalent);
+
+
+    document.getElementById(
+        "finalResult"
+    ).textContent =
+        num(totalFinalPax);
+
+
+    /* =====================================================
+       BREAKDOWN
+    ===================================================== */
+
+    const body =
+        document.getElementById(
+            "opportunityBreakdownBody"
+        );
+
+
+    body.innerHTML = "";
+
+
+    opportunities.forEach(
+        op=>{
+
+            body.insertAdjacentHTML(
+                "beforeend",
+                `
+
+                <tr>
+
+                    <td>
+                        <strong>
+                            Opportunity #${op.number}
+                        </strong>
+                    </td>
+
+                    <td>
+                        ${num(op.pax)}
+                    </td>
+
+                    <td class="money">
+                        ${peso(op.desiredAmount)}
+                    </td>
+
+                    <td class="money">
+                        ${peso(op.foodAmount)}
+                    </td>
+
+                    <td class="money">
+                        ${peso(op.amountToAdd)}
+                    </td>
+
+                    <td>
+                        ${num(op.paxEquivalent)}
+                    </td>
+
+                    <td>
+                        ${num(op.finalPax)}
+                    </td>
+
+                    <td class="money">
+                        ${peso(
+                            op.tenPercentOpportunity
+                        )}
+                    </td>
+
+                    <td class="money">
+                        ${peso(
+                            op.totalSalesOpportunity
+                        )}
+                    </td>
+
+                </tr>
+
+                `
+            );
+
+        }
+    );
+
+
+    if(
+        opportunities.length > 1
+    ){
+
+        body.insertAdjacentHTML(
+            "beforeend",
+            `
+
+            <tr class="total">
+
+                <td>
+                    TOTAL
+                </td>
+
+                <td>
+                    ${num(totalPax)}
+                </td>
+
+                <td>
+                    —
+                </td>
+
+                <td>
+                    —
+                </td>
+
+                <td class="money">
+                    ${peso(
+                        totalAmountAdded
+                    )}
+                </td>
+
+                <td>
+                    ${num(
+                        totalPaxEquivalent
+                    )}
+                </td>
+
+                <td>
+                    ${num(
+                        totalFinalPax
+                    )}
+                </td>
+
+                <td class="money">
+                    ${peso(
+                        totalTenPercentOpportunity
+                    )}
+                </td>
+
+                <td class="money">
+                    ${peso(
+                        totalSalesOpportunity
+                    )}
+                </td>
+
+            </tr>
+
+            `
+        );
+
+    }
+
+
+    /* =====================================================
+       AGGREGATED TABLE
+    ===================================================== */
+
+    let foodDisplay =
+        "—";
+
+
+    if(
+        opportunities.length === 1
+    ){
+
+        foodDisplay =
+            peso(
+                opportunities[0]
+                    .foodAmount
+            );
+
+    }
+    else if(
+        opportunities.length > 1
+    ){
+
+        const firstFood =
+            opportunities[0]
+                .foodAmount;
+
+
+        const allSame =
+            opportunities.every(
+                op =>
+                    Math.abs(
+                        op.foodAmount -
+                        firstFood
+                    ) < 0.000001
+            );
+
+
+        foodDisplay =
+            allSame
+                ?
+                peso(firstFood)
+                :
+                "Multiple";
+
+    }
+
+
+    document.getElementById(
+        "opFinalPax"
+    ).textContent =
+        num(totalFinalPax);
+
+
+    document.getElementById(
+        "opFoodAmount"
+    ).textContent =
+        foodDisplay;
+
+
+    document.getElementById(
+        "opBaseFood"
+    ).textContent =
+        peso(totalBaseFoodValue);
+
+
+    document.getElementById(
+        "opTenPercent"
+    ).textContent =
+        peso(
+            totalTenPercentOpportunity
+        );
+
+
+    document.getElementById(
+        "opAmountAdded"
+    ).textContent =
+        peso(totalAmountAdded);
+
+
+    document.getElementById(
+        "opTotalOpportunity"
+    ).textContent =
+        peso(totalSalesOpportunity);
+
+
+    /* =====================================================
+       OPPORTUNITY RATE
+    ===================================================== */
+
+    let opportunityRate =
+        0;
+
+
+    if(
+        totalBaseFoodValue > 0
+    ){
+
+        opportunityRate =
+            (
+                totalSalesOpportunity /
+                totalBaseFoodValue
+            ) *
+            100;
+
+    }
+
+
+    document.getElementById(
+        "opportunityRate"
+    ).textContent =
+        opportunityRate.toFixed(2) +
+        "%";
+
+
+    /* =====================================================
+       DESCRIPTION
+    ===================================================== */
+
+    if(
+        totalFinalPax > 0 &&
+        totalBaseFoodValue > 0
+    ){
+
+        document.getElementById(
+            "opportunityDescription"
+        ).textContent =
+
+            peso(
+                totalAmountAdded
+            ) +
+
+            " Amount Added + " +
+
+            peso(
+                totalTenPercentOpportunity
+            ) +
+
+            " 10% Food Opportunity = " +
+
+            peso(
+                totalSalesOpportunity
+            ) +
+
+            " Total Sales Opportunity.";
+
+    }
+    else{
+
+        document.getElementById(
+            "opportunityDescription"
+        ).textContent =
+
+            "Enter your sales data to calculate the opportunity rate.";
+
+    }
+
+
+    /* =====================================================
+       MARKETING INSIGHT
+    ===================================================== */
+
+    if(
+        totalPax > 0 &&
+        totalAmountAdded > 0 &&
+        totalBaseFoodValue > 0
+    ){
+
+        const summary =
+
+            "Across " +
+
+            opportunities.length +
+
+            " sales opportunity input" +
+
+            (
+                opportunities.length === 1
+                    ?
+                    ""
+                    :
+                    "s"
+            ) +
+
+            ", the total pax is " +
+
+            num(totalPax) +
+
+            ". The total amount added is " +
+
+            peso(totalAmountAdded) +
+
+            ", representing " +
+
+            num(totalPaxEquivalent) +
+
+            " pax equivalent. The resulting total final pax is " +
+
+            num(totalFinalPax) +
+
+            ". The combined base food value is " +
+
+            peso(totalBaseFoodValue) +
+
+            ", with a 10% food opportunity of " +
+
+            peso(
+                totalTenPercentOpportunity
+            ) +
+
+            ". Combined total sales opportunity is " +
+
+            peso(
+                totalSalesOpportunity
+            ) +
+
+            ", equivalent to " +
+
+            opportunityRate.toFixed(2) +
+
+            "% of the combined base food value.";
+
+
+        document.getElementById(
+            "summaryText"
+        ).textContent =
+            summary;
+
+
+        document.getElementById(
+            "summaryHighlight"
+        ).textContent =
+
+            "FINAL PAX: " +
+
+            num(totalFinalPax) +
+
+            " • TOTAL SALES OPPORTUNITY: " +
+
+            peso(
+                totalSalesOpportunity
+            ) +
+
+            " • OPPORTUNITY RATE: " +
+
+            opportunityRate.toFixed(2) +
+
+            "%";
+
+    }
+    else{
+
+        document.getElementById(
+            "summaryText"
+        ).textContent =
+
+            "Enter your sales information above to generate the sales opportunity summary.";
+
+
+        document.getElementById(
+            "summaryHighlight"
+        ).textContent =
+
+            "FINAL PAX: 0.00 • TOTAL SALES OPPORTUNITY: ₱0.00 • OPPORTUNITY RATE: 0.00%";
+
+    }
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetCalculator(){
+
+    document.getElementById(
+        "opportunityInputs"
+    ).innerHTML = "";
+
+
+    opportunityCounter = 0;
+898
+
+    addOpportunity();
+
+
+    calculateAll();
+
+}
+
+
+
+/* =========================================================
+   DIGITAL SIGNATURE PAD
+========================================================= */
+
+let signatureCanvas;
+let signatureCtx;
+let signatureDrawing = false;
+
+function setupSignaturePad(){
+
+    signatureCanvas =
+        document.getElementById("signaturePad");
+
+    if(!signatureCanvas) return;
+
+    signatureCtx =
+        signatureCanvas.getContext("2d");
+
+    resizeSignatureCanvas();
+
+    const start = e => {
+        e.preventDefault();
+        signatureDrawing = true;
+        const point = getSignaturePoint(e);
+        signatureCtx.beginPath();
+        signatureCtx.moveTo(point.x, point.y);
+    };
+
+    const draw = e => {
+        if(!signatureDrawing) return;
+        e.preventDefault();
+
+        const point = getSignaturePoint(e);
+
+        signatureCtx.lineTo(point.x, point.y);
+        signatureCtx.stroke();
+    };
+
+    const end = e => {
+        if(e) e.preventDefault();
+        signatureDrawing = false;
+        signatureCtx.closePath();
+    };
+
+    signatureCanvas.addEventListener("pointerdown", start);
+    signatureCanvas.addEventListener("pointermove", draw);
+    signatureCanvas.addEventListener("pointerup", end);
+    signatureCanvas.addEventListener("pointercancel", end);
+    signatureCanvas.addEventListener("pointerleave", end);
+
+    signatureCtx.lineWidth = 2.2;
+    signatureCtx.lineCap = "round";
+    signatureCtx.lineJoin = "round";
+    signatureCtx.strokeStyle = "#202020";
+
+    const today = new Date().toISOString().split("T")[0];
+    const dateInput = document.getElementById("signatureDate");
+
+    if(dateInput && !dateInput.value){
+        dateInput.value = today;
+    }
+}
+
+function resizeSignatureCanvas(){
+
+    if(!signatureCanvas) return;
+
+    const rect = signatureCanvas.getBoundingClientRect();
+
+    if(rect.width === 0) return;
+
+    const oldCanvas =
+        document.createElement("canvas");
+
+    oldCanvas.width =
+        signatureCanvas.width;
+
+    oldCanvas.height =
+        signatureCanvas.height;
+
+    if(
+        signatureCanvas.width &&
+        signatureCanvas.height
+    ){
+        oldCanvas
+            .getContext("2d")
+            .drawImage(
+                signatureCanvas,
+                0,
+                0
+            );
+    }
+
+    const ratio =
+        Math.max(
+            window.devicePixelRatio || 1,
+            1
+        );
+
+    signatureCanvas.width =
+        Math.floor(rect.width * ratio);
+
+    signatureCanvas.height =
+        Math.floor(rect.height * ratio);
+
+    signatureCtx =
+        signatureCanvas.getContext("2d");
+
+    signatureCtx.scale(ratio, ratio);
+
+    signatureCtx.lineWidth = 2.2;
+    signatureCtx.lineCap = "round";
+    signatureCtx.lineJoin = "round";
+    signatureCtx.strokeStyle = "#202020";
+
+    if(oldCanvas.width && oldCanvas.height){
+        signatureCtx.drawImage(
+            oldCanvas,
+            0,
+            0,
+            oldCanvas.width,
+            oldCanvas.height,
+            0,
+            0,
+            rect.width,
+            rect.height
+        );
+    }
+}
+
+function getSignaturePoint(e){
+
+    const rect =
+        signatureCanvas.getBoundingClientRect();
+
+    return {
+        x:e.clientX - rect.left,
+        y:e.clientY - rect.top
+    };
+
+}
+
+function clearSignature(){
+
+    if(!signatureCanvas || !signatureCtx) return;
+
+    signatureCtx.clearRect(
+        0,
+        0,
+        signatureCanvas.clientWidth,
+        signatureCanvas.clientHeight
+    );
+
+}
+
+window.addEventListener(
+    "resize",
+    () => {
+        resizeSignatureCanvas();
+    }
+);
+
+
+/* =========================================================
+   PRINT REPORT
+========================================================= */
+
+function updatePrintReceipt(){
+
+    const getText = id => {
+        const el = document.getElementById(id);
+        return el ? el.textContent.trim() : "";
+    };
+
+    document.getElementById("receiptDate").textContent =
+        new Date().toLocaleString();
+
+    document.getElementById("receiptPax").textContent =
+        getText("displayPax");
+
+    document.getElementById("receiptAdd").textContent =
+        getText("displayAdd");
+
+    document.getElementById("receiptEquivalent").textContent =
+        getText("displayEquivalent");
+
+    document.getElementById("receiptFinalPax").textContent =
+        getText("displayFinal");
+
+    document.getElementById("receiptBaseFood").textContent =
+        getText("opBaseFood");
+
+    document.getElementById("receiptTenPercent").textContent =
+        getText("opTenPercent");
+
+    document.getElementById("receiptTotalOpportunity").textContent =
+        getText("opTotalOpportunity");
+
+    document.getElementById("receiptRate").textContent =
+        getText("opportunityRate");
+
+    document.getElementById("receiptFinalOpportunity").textContent =
+        getText("opTotalOpportunity");
+
+    document.getElementById("receiptInsight").textContent =
+        getText("summaryText");
+
+    document.getElementById("receiptPreparedBy").textContent =
+        document.getElementById("preparedBy").value.trim() || "—";
+
+    document.getElementById("receiptPosition").textContent =
+        document.getElementById("preparedPosition").value.trim() || "—";
+
+    document.getElementById("receiptApprovedBy").textContent =
+        document.getElementById("approvedBy").value.trim() || "—";
+
+    document.getElementById("receiptSignatureDate").textContent =
+        document.getElementById("signatureDate").value || "—";
+
+    const signatureImage = document.getElementById("receiptSignatureImage");
+    const signatureCanvas = document.getElementById("signaturePad");
+
+    if(signatureCanvas){
+        signatureImage.src = signatureCanvas.toDataURL("image/png");
+        signatureImage.style.display = "block";
+    }
+}
+
+function printReport(){
+
+    calculateAll();
+    updatePrintReceipt();
+
+    window.print();
+
+}
+
+
+
+/* =========================================================
+   START
+========================================================= */
+
+addOpportunity();
+
+setupSignaturePad();
+
+</script>
+
+</body>
+
+</html>
